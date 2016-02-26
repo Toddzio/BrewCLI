@@ -6,4 +6,7 @@ class Beer
 		@style = style
 		@description = description
 	end
+	puts name
+	puts style
+	puts description
 end
