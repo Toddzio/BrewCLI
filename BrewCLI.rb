@@ -1,6 +1,9 @@
 require 'httparty'
 require 'pry'
-require 'asciiart'
+require_relative 'beer.rb'
+require_relative 'brewery.rb'
+# require 'asciiart'
+system ("clear")
 
 puts "
  ##:::::'##'########'##:::::::'######::'#######:'##::::'##'########::'########:'#######:::'########:'########:'########'##:::::'##:::'######:'##::::::'####:
@@ -12,13 +15,14 @@ puts "
 . ###. ###::########:########. ######:. #######::##:::: ##:########::::: ##:::. #######::::########::##:::. ##:########. ###. ###:::. ######::########'####:
 :...::...::........:........::......:::.......::..:::::..:........::::::..:::::.......::::........::..:::::..:........::...::...:::::......::........:....::'
 "
-a = AsciiArt.new("image/craft-beer.jpg")
-puts a.to_ascii_art(width:155, color: true)
+puts "What Brewery would you like to learn about today?"
+brewery_selection = gets.chomp
+# a = AsciiArt.new("image/craft-beer.jpg")
+# puts a.to_ascii_art(width:155, color: true)
 
-require_relative 'beer.rb'
-require_relative 'brewery.rb'
 
-brewery = Brewery.new("Austin Beerworks").find_brewery
+
+brewery = Brewery.new("#{brewery_selection}").find_brewery
 
 # https://api.brewerydb.com/v2/search?q=trve&type=beer&key=181c714e2e3b0592a86e514652c5e727
 
