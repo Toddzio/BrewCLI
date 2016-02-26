@@ -18,21 +18,22 @@ end
 
 def find_beer
 	response = HTTParty.get("https://api.brewerydb.com/v2/search?q=#{@brewery_short}&type=beer&key=181c714e2e3b0592a86e514652c5e727")
-	beer_rand = response.length
-	# beer_rando = beer_rand.shuffle
-	# 
+	rando = response.length
+	# binding.pry
 	i = 0
-	while i < beer_rand do
-		beer_name[i] = response["data"][i]["name"]
-		beer_style[i] = response["data"][i]["style"]["name"]
+	while i < 5 do
+		random = rand(rando)
+		x = random
+		beer_name = response["data"][x]["name"]
+		beer_style = response["data"][x]["style"]["name"]
 		# beer_abv = response["data"].first
-		beer_desc[i] = response["data"][i]["style"]["description"]
+		beer_desc = response["data"][x]["style"]["description"]
 		#beers = []
 		puts "Here are a selection of their beers"
-		puts "Beer #{i}"
-		puts beer_name[i]
-		puts beer_style[i]
-		puts beer_desc[i]
+		puts "Beer #{i +1}"
+		puts beer_name
+		puts beer_style
+		puts beer_desc
 		i += 1
 	end
 	beer = Beer.new(beer_name, beer_style, beer_desc)
